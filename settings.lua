@@ -12,7 +12,7 @@ data:extend({
 		name = "resource-labels-show-labels",
 		setting_type = "runtime-global",
 		default_value = false,
-		order = "a"
+		order = "aa"
 	},
 	{
 		type = "int-setting",
@@ -21,5 +21,12 @@ data:extend({
 		default_value = 60,
 		minimum_value = 0,
 		order = "bb"
+	},
+	{
+		type = "bool-setting",
+		name = "resource-labels-show-resource-count",
+		setting_type = "runtime-global",
+		default_value = false,
+		order = "ab"
 	},
 })

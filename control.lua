@@ -10,6 +10,17 @@ local ResourceConfig = require('config')
 local MOD = {}
 MOD.name = "Resource Labels"
 
+local SIunits =
+{
+    [0] = "",
+    [1] = "k",
+    [2] = "M",
+    [3] = "G",
+    [4] = "T",
+    [5] = "P",
+    [6] = "E"
+}
+
 Event.register(Event.core_events.init,
     function()
         global.chunksToLabel = {}
@@ -104,8 +115,11 @@ function createLabelForResourcePatch(player, surface, patch)
         local signalID = getSignalID(entity)
 
         local label = ""
+        if not isInfiniteResource(entity) and settings.global["resource-labels-show-resource-count"].value then
+            label = label .. numberToSiString(getResourceCount(patch)) .. " "
+        end
         if settings.global["resource-labels-show-labels"].value then
-            label = getLabel(entity)
+            label = label .. getLabel(entity)
         end
 
         local chartTag = {position=centerPosition, icon=signalID, text=label}
@@ -161,6 +175,33 @@ function getSignalID(entity)
     end
 
     return signalID
+end
+
+function getResourceCount(patch)
+    local count = 0
+    
+    table.each(patch, function(entity) 
+        count = count + entity.amount
+    end)
+
+    return count
+end
+
+function numberToSiString(number)
+    local result = number
+    local thousands = 0
+
+    while result >= 1000 do
+        result = result / 1000
+        thousands = thousands + 1
+    end
+
+    return string.format("%3d", result) .. SIunits[thousands]
+end
+
+function isInfiniteResource(entity)
+    prototype = game.entity_prototypes[entity.name]
+    return prototype and prototype.infinite_resource
 end
 
 function getLabel(entity)
