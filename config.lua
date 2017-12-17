@@ -1,14 +1,19 @@
 local ResourceConfig = {}
 
+-- adds a label for a resource that has an item as mining result
+-- params: entity-name, label, item-name
 local function addItem(resourceEntity, label, icon)
     ResourceConfig[resourceEntity] = {label=label, type="item", icon=icon}
 end
 
+-- adds a label for a resource that has a fluid as mining result
+-- params: entity-name, label, fluid-name
 local function addFluid(resourceEntity, label, icon)
     ResourceConfig[resourceEntity] = {label=label, type="fluid", icon=icon}
 end
 
 -- adds an infinite version of an ore, note that the regular ore must be added first using addItem!
+-- params: entity-name
 local function addInfiniteItem(baseResourceEntity)
     local base = ResourceConfig[baseResourceEntity]
     local infiniteEntity = "infinite-" .. baseResourceEntity
@@ -92,6 +97,9 @@ addItem ("sulfidic-ore", "Sulfidic", "sulfidic-ore")
 -- Yuoki Industries
 addItem ("y-res1", "N4-Material", "y-res1")
 addItem ("y-res2", "F7-Material", "y-res2")
+
+-- Alien Wall
+addItem ("alien-biomass", "Alien Biomass", "alien-biomass")
 
 -- Angel's Infinite Ores
 addInfiniteItem("coal")

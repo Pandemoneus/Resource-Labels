@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.16.1
+Date: 17.12.2017
+  Features:
+    - Added support for Alien Walls mod
+  Minor Features:
+    - Added documentation to the config file
+---------------------------------------------------------------------------------------------------
+Version: 0.16.0
+Date: 13.12.2017
+  Changes:
+    - Updated to Factorio 0.16
