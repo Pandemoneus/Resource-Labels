@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.2
+Date: 22.12.2017
+  Minor Features:
+    - Added update message
+  Changes:
+    - Previous labels are removed when the mod is updated and used in a savegame with an older version (sorry!)
+  Bugfixes:
+    - Creating labels after updating the mod no longer causes errors
+    - Saving and loading the game while labels are being generated no longer causes errors
+---------------------------------------------------------------------------------------------------
 Version: 0.16.1
 Date: 17.12.2017
   Features:

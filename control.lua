@@ -2,13 +2,13 @@ local Game = require('stdlib.game')
 local Area = require('stdlib.area.area')
 local Resource = require('stdlib.entity.resource')
 local Chunk = require('stdlib.area.chunk')
-local Entity = require('stdlib/entity/entity')
 require("stdlib.event.event")
 
 local ResourceConfig = require('config')
 
 local MOD = {}
-MOD.name = "Resource Labels"
+MOD.title = "Resource Labels"
+MOD.name = "ResourceLabels"
 
 local SIunits =
 {
@@ -26,6 +26,26 @@ Event.register(Event.core_events.init,
         global.chunksToLabel = {}
         global.labeledResourcePatches = {}
         global.isLabeling = {}
+    end
+)
+
+Event.register(Event.core_events.configuration_changed,
+    function(event)
+        if event.mod_changes[MOD.name] and event.mod_changes[MOD.name].old_version and event.mod_changes[MOD.name].new_version then
+            local changes = event.mod_changes[MOD.name]
+            game.print(serpent.block(changes))
+
+            game.print{"resource-labels-update-msg", MOD.title, changes.old_version, changes.new_version}
+
+            for forceName, _ in pairs(global.labeledResourcePatches) do
+                game.forces[forceName].print{"resource-labels-update-deleted-labels-msg"}
+            end
+
+            -- if the mod is updated while the labeling process was running, cancel the process by clearing the schedule table
+            global.chunksToLabel = {}
+            global.isLabeling = {}
+            removeLabelsOnModUpdate()
+        end
     end
 )
 
@@ -72,7 +92,8 @@ function scheduleLabelingForChunk(scheduledTick, player, surface, chunk)
         global.chunksToLabel[scheduledTick] = {}
     end
 
-    table.insert(global.chunksToLabel[scheduledTick], {player, surface, Chunk.to_area(chunk)})
+    local chunkArea = Chunk.to_area(chunk)
+    table.insert(global.chunksToLabel[scheduledTick], {player, surface, stdlibAreaToFactorioArea(Chunk.to_area(chunk))})
 end
 
 Event.register(defines.events.on_tick,
@@ -132,7 +153,7 @@ function createLabelForResourcePatch(player, surface, patch)
         end)
 
         if not success then
-            player.print{"resource-labels-unknown-resource-entity-msg", entity.name, MOD.name}
+            player.print{"resource-labels-unknown-resource-entity-msg", entity.name, MOD.title}
         end
 
         if addedChartTag and type(addedChartTag) ~= "string" then
@@ -142,7 +163,7 @@ function createLabelForResourcePatch(player, surface, patch)
                 --entities = patch,
                 type = entity.name,
                 surface = surface,
-                bounds = {bounds.left_top, bounds.right_bottom},
+                bounds = stdlibAreaToFactorioArea(bounds),
                 label = addedChartTag
             }
 
@@ -235,22 +256,40 @@ Event.register("resource-labels-remove",
 
 function removeLabels(currentTick, player)
     local force = player.force
-    local isLabeling = global.isLabeling[force.name]
 
-    if currentTick <= isLabeling.stop then
-        local initiator = isLabeling.initiator
-        player.print{"resource-labels-remove-but-not-finished-msg", initiator, isLabeling.stop - currentTick}
-    else
-        local labelData = global.labeledResourcePatches[force.name]
-        if labelData then
-            table.each(labelData, function(labeledResourceData)
-                local label = labeledResourceData.label
-                if label.valid then
-                    label.destroy()
-                end
-            end)
+    if global.isLabeling[force.name] then
+        local isLabeling = global.isLabeling[force.name]
+
+        if currentTick <= isLabeling.stop then
+            local initiator = isLabeling.initiator
+            player.print{"resource-labels-remove-but-not-finished-msg", initiator, isLabeling.stop - currentTick}
+        else
+            removeLabelsUnconditionally(force)
         end
+    end
+end
+
+function removeLabelsUnconditionally(force)
+    local labelData = global.labeledResourcePatches[force.name]
+    if labelData then
+        table.each(labelData, function(labeledResourceData)
+            local label = labeledResourceData.label
+            if label.valid then
+                label.destroy()
+            end
+        end)
 
         global.labeledResourcePatches[force.name] = nil
     end
+end
+
+function removeLabelsOnModUpdate()
+    for forceName, _ in pairs(global.labeledResourcePatches) do
+        removeLabelsUnconditionally(game.forces[forceName])
+    end
+end
+
+--workaround for a bug with serpent, because the stdlib Area is converted to a string when loading
+function stdlibAreaToFactorioArea(area)
+    return {left_top={x=area.left_top.x, y=area.left_top.y}, right_bottom={x=area.right_bottom.x, y=area.right_bottom.y}}
 end
