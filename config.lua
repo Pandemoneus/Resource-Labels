@@ -64,6 +64,11 @@ addFluid("angels-natural-gas", "Natural Gas", "gas-natural-1")
 -- Dark Matter Replicators
 addItem ("tenemut", "Tenemut", "tenemut")
 
+-- DrugLab
+addItem ("manganese-ore-dl", "Manganese", "manganese-ore-dl")
+addItem ("tarsands-dl", "Tar Sand", "tarsands-dl")
+addFluid("fracking-sludge-dl", "Fracking Sludge", "fracking-sludge-dl")
+
 -- Geothermal
 addFluid("geothermal", "Geothermal Water", "geothermal-water")
 
