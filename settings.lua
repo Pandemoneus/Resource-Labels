@@ -5,7 +5,7 @@ data:extend({
 		setting_type = "runtime-global",
 		default_value = 20,
 		minimum_value = 0,
-		order = "ba"
+		order = "fa"
 	},
 	{
 		type = "bool-setting",
@@ -20,7 +20,7 @@ data:extend({
 		setting_type = "runtime-global",
 		default_value = 60,
 		minimum_value = 0,
-		order = "bb"
+		order = "fb"
 	},
 	{
 		type = "bool-setting",
@@ -28,5 +28,28 @@ data:extend({
 		setting_type = "runtime-global",
 		default_value = false,
 		order = "ab"
+	},
+	{
+		type = "bool-setting",
+		name = "resource-labels-show-infinite-ores",
+		setting_type = "runtime-global",
+		default_value = true,
+		order = "ac"
+	},
+	{
+		type = "int-setting",
+		name = "resource-labels-minimum-resource-count",
+		setting_type = "runtime-global",
+		default_value = 0,
+		minimum_value = 0,
+		order = "aba"
+	},
+	{
+		type = "int-setting",
+		name = "resource-labels-minimum-resource-entity-count",
+		setting_type = "runtime-global",
+		default_value = 10,
+		minimum_value = 0,
+		order = "abb"
 	},
 })

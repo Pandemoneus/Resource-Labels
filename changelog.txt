@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.4
+Date: 06.01.2018
+  Features:
+    - Added option to not generate labels for infinite ores
+    - Added option to not generate labels for ore patches with less or equal amount of ores
+    - Added option to not generate labels for ore patches of less or equal size
+  Changes:
+    - Mod settings are now cached whenever a player starts generating labels
+  Bugfixes:
+    - Removed debug message of version change
+---------------------------------------------------------------------------------------------------
 Version: 0.16.3
 Date: 25.12.2017
   Features:

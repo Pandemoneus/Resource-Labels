@@ -26,6 +26,7 @@ Event.register(Event.core_events.init,
         global.chunksToLabel = {}
         global.labeledResourcePatches = {}
         global.isLabeling = {}
+        global.settings = {}
     end
 )
 
@@ -33,7 +34,6 @@ Event.register(Event.core_events.configuration_changed,
     function(event)
         if event.mod_changes[MOD.name] and event.mod_changes[MOD.name].old_version and event.mod_changes[MOD.name].new_version then
             local changes = event.mod_changes[MOD.name]
-            game.print(serpent.block(changes))
 
             game.print{"resource-labels-update-msg", MOD.title, changes.old_version, changes.new_version}
 
@@ -44,6 +44,7 @@ Event.register(Event.core_events.configuration_changed,
             -- if the mod is updated while the labeling process was running, cancel the process by clearing the schedule table
             global.chunksToLabel = {}
             global.isLabeling = {}
+            global.settings = {}
             removeLabelsOnModUpdate()
         end
     end
@@ -51,10 +52,13 @@ Event.register(Event.core_events.configuration_changed,
 
 Event.register("resource-labels-add",
     function(event)
+        --cache settings so the settings file is not accessed every tick while resource patches are being labeled
+        cacheSettings()
+
         local player = Game.get_player(event.player_index)
         local force = player.force
 
-        local cooldown = settings.global["resource-labels-cooldown"].value
+        local cooldown = global.settings["resource-labels-cooldown"]
 
         if not global.isLabeling[force.name] then
             global.isLabeling[force.name] = {}
@@ -68,7 +72,7 @@ Event.register("resource-labels-add",
             local force = player.force
 
             local scheduledTick = game.tick
-            local scheduleInterval = settings.global["resource-labels-schedule-interval"].value
+            local scheduleInterval = global.settings["resource-labels-schedule-interval"]
 
             for chunk in surface.get_chunks() do
                 if force.is_chunk_charted(surface, chunk) and surface.count_entities_filtered{area=Chunk.to_area(chunk), type="resource"} > 0 then
@@ -135,11 +139,28 @@ function createLabelForResourcePatch(player, surface, patch)
 
         local signalID = getSignalID(entity)
 
+        --no label for resource patches with less than specified amount of entities
+        if signalID and signalID.type == "item" and #patch <= global.settings["resource-labels-minimum-resource-entity-count"] then
+            return
+        end
+
+        if isInfiniteResource(entity) then
+            --no label if the player does not want to see infinite ores
+            if signalID and signalID.type == "item" and not global.settings["resource-labels-show-infinite-ores"] then
+                return
+            end
+        else
+            --no label if the resource count is less than specified in the mod settings
+            if getResourceCount(patch) <= global.settings["resource-labels-minimum-resource-count"] then
+                return
+            end
+        end
+
         local label = ""
-        if not isInfiniteResource(entity) and settings.global["resource-labels-show-resource-count"].value then
+        if not isInfiniteResource(entity) and global.settings["resource-labels-show-resource-count"] then
             label = label .. numberToSiString(getResourceCount(patch)) .. " "
         end
-        if settings.global["resource-labels-show-labels"].value then
+        if global.settings["resource-labels-show-labels"] then
             label = label .. getLabel(entity)
         end
 
@@ -292,4 +313,20 @@ end
 --workaround for a bug with serpent, because the stdlib Area is converted to a string when loading
 function stdlibAreaToFactorioArea(area)
     return {left_top={x=area.left_top.x, y=area.left_top.y}, right_bottom={x=area.right_bottom.x, y=area.right_bottom.y}}
+end
+
+function cacheSettings()
+    local settings = {}
+    cacheSetting(settings, "resource-labels-schedule-interval")
+    cacheSetting(settings, "resource-labels-show-labels")
+    cacheSetting(settings, "resource-labels-cooldown")
+    cacheSetting(settings, "resource-labels-show-resource-count")
+    cacheSetting(settings, "resource-labels-show-infinite-ores")
+    cacheSetting(settings, "resource-labels-minimum-resource-count")
+    cacheSetting(settings, "resource-labels-minimum-resource-entity-count")
+    global.settings = settings
+end
+
+function cacheSetting(settingsTable, settingName)
+    settingsTable[settingName] = settings.global[settingName].value
 end
