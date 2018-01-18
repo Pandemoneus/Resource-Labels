@@ -122,11 +122,25 @@ function labelResourcesInArea(player, surface, area)
             local resourcesFiltered = Resource.filter_resources(resources, {type})
 
             local entity = table.first(resourcesFiltered)
-            local patch = Resource.get_resource_patch_at(surface, entity.position, type)
 
-            createLabelForResourcePatch(player, surface, patch)
+            if labelIsEnabled(entity) then
+                local patch = Resource.get_resource_patch_at(surface, entity.position, type)
+
+                createLabelForResourcePatch(player, surface, patch)
+            end
         end
     end
+end
+
+function labelIsEnabled(entity)
+    local isEnabled = true
+
+    local configEntry = ResourceConfig[entity.name]
+    if configEntry then
+        isEnabled = configEntry.enabled
+    end
+
+    return isEnabled
 end
 
 function createLabelForResourcePatch(player, surface, patch)

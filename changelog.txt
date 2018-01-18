@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.5
+Date: 08.01.2018
+  Features:
+    - Added support for Deep Core Mining mod (untested)
+    - Labels can now be disabled for certain resources in the config file (use hide("iron-ore") in the last section of the file)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.4
 Date: 06.01.2018
   Features:

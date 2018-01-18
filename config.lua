@@ -1,18 +1,18 @@
 local ResourceConfig = {}
 
--- adds a label for a resource that has an item as mining result
+-- Adds a label for a resource that has an item as mining result
 -- params: entity-name, label, item-name
 local function addItem(resourceEntity, label, icon)
-    ResourceConfig[resourceEntity] = {label=label, type="item", icon=icon}
+    ResourceConfig[resourceEntity] = {label=label, type="item", icon=icon, enabled=true}
 end
 
--- adds a label for a resource that has a fluid as mining result
+-- Adds a label for a resource that has a fluid as mining result
 -- params: entity-name, label, fluid-name
 local function addFluid(resourceEntity, label, icon)
-    ResourceConfig[resourceEntity] = {label=label, type="fluid", icon=icon}
+    ResourceConfig[resourceEntity] = {label=label, type="fluid", icon=icon, enabled=true}
 end
 
--- adds an infinite version of an ore, note that the regular ore must be added first using addItem!
+-- Adds an infinite version of an ore, note that the regular ore must be added first using addItem!
 -- params: entity-name
 local function addInfiniteItem(baseResourceEntity)
     local base = ResourceConfig[baseResourceEntity]
@@ -20,8 +20,23 @@ local function addInfiniteItem(baseResourceEntity)
     local infiniteLabel = "Infinite " .. base.label
     local infiniteIcon = base.icon
 
-    ResourceConfig[infiniteEntity] = {label=infiniteLabel, type="item", icon=infiniteIcon}
+    ResourceConfig[infiniteEntity] = {label=infiniteLabel, type="item", icon=infiniteIcon, enabled=true}
 end
+
+-- Hides a previously defined resource
+-- params: entity-name
+local function hide(baseResourceEntity)
+    ResourceConfig[baseResourceEntity].enabled = false
+end
+
+-- examples:
+-- 1)
+-- addItem("coal", "Coal", "coal")
+-- Adds the label "Coal" with the icon of the item "coal" to entities named "coal".
+-- 2)
+-- hide("coal")
+-- Coal will no longer be shown on the map.
+
 
 --Vanilla
 addItem ("coal", "Coal", "coal")
@@ -63,6 +78,13 @@ addFluid("angels-natural-gas", "Natural Gas", "gas-natural-1")
 
 -- Dark Matter Replicators
 addItem ("tenemut", "Tenemut", "tenemut")
+
+-- Deep Core Mining
+addItem ("copper-ore-patch", "Copper (Deep)", "vtk-deepcore-mining-copper-ore-chunk")
+addItem ("iron-ore-patch", "Iron (Deep)", "vtk-deepcore-mining-iron-ore-chunk")
+addItem ("coal-patch", "Coal (Deep)", "vtk-deepcore-mining-coal-chunk")
+addItem ("stone-patch", "Stone (Deep)", "vtk-deepcore-mining-stone-chunk")
+addItem ("uranium-ore-patch", "Uranium (Deep)", "vtk-deepcore-mining-uranium-ore")
 
 -- DrugLab
 addItem ("manganese-ore-dl", "Manganese", "manganese-ore-dl")
@@ -134,5 +156,9 @@ addInfiniteItem("angels-ore3")
 addInfiniteItem("angels-ore4")
 addInfiniteItem("angels-ore5")
 addInfiniteItem("angels-ore6")
+
+
+-- Hide resources here
+-- hide("coal")
 
 return ResourceConfig
