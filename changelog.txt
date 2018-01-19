@@ -1,6 +1,12 @@
+Version: 0.16.6
+Date: 19.01.2018
+  Features:
+    - Added support for Ice Ore mod
+  Bugfixes:
+    - Fixed invalid icon for Deep Core Mining uranium patches
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.5
-Date: 08.01.2018
+Date: 18.01.2018
   Features:
     - Added support for Deep Core Mining mod (untested)
     - Labels can now be disabled for certain resources in the config file (use hide("iron-ore") in the last section of the file)

@@ -84,7 +84,7 @@ addItem ("copper-ore-patch", "Copper (Deep)", "vtk-deepcore-mining-copper-ore-ch
 addItem ("iron-ore-patch", "Iron (Deep)", "vtk-deepcore-mining-iron-ore-chunk")
 addItem ("coal-patch", "Coal (Deep)", "vtk-deepcore-mining-coal-chunk")
 addItem ("stone-patch", "Stone (Deep)", "vtk-deepcore-mining-stone-chunk")
-addItem ("uranium-ore-patch", "Uranium (Deep)", "vtk-deepcore-mining-uranium-ore")
+addItem ("uranium-ore-patch", "Uranium (Deep)", "vtk-deepcore-mining-uranium-ore-chunk")
 
 -- DrugLab
 addItem ("manganese-ore-dl", "Manganese", "manganese-ore-dl")
@@ -93,6 +93,9 @@ addFluid("fracking-sludge-dl", "Fracking Sludge", "fracking-sludge-dl")
 
 -- Geothermal
 addFluid("geothermal", "Geothermal Water", "geothermal-water")
+
+-- Ice Ore
+addItem ("ice-ore", "Ice", "ice-ore")
 
 -- Portal Research
 addItem ("factorium-ore", "Factorium", "factorium-ore")
