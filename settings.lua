@@ -52,4 +52,11 @@ data:extend({
 		minimum_value = 0,
 		order = "abb"
 	},
+	{
+		type = "bool-setting",
+		name = "resource-labels-show-unknown-entity-msg",
+		setting_type = "runtime-global",
+		default_value = true,
+		order = "z"
+	},
 })

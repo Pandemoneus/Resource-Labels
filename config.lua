@@ -85,6 +85,13 @@ addItem ("iron-ore-patch", "Iron (Deep)", "vtk-deepcore-mining-iron-ore-chunk")
 addItem ("coal-patch", "Coal (Deep)", "vtk-deepcore-mining-coal-chunk")
 addItem ("stone-patch", "Stone (Deep)", "vtk-deepcore-mining-stone-chunk")
 addItem ("uranium-ore-patch", "Uranium (Deep)", "vtk-deepcore-mining-uranium-ore-chunk")
+addItem ("vtk-deepcore-mining-crack", "Deep Core Crack", "vtk-deepcore-mining-ore-chunk")
+addItem ("angels-ore1-patch", "Saphirite (Deep)", "vtk-deepcore-mining-angels-ore1-chunk")
+addItem ("angels-ore2-patch", "Jivolite (Deep)", "vtk-deepcore-mining-angels-ore2-chunk")
+addItem ("angels-ore3-patch", "Stiratite (Deep)", "vtk-deepcore-mining-angels-ore3-chunk")
+addItem ("angels-ore4-patch", "Crotinnium (Deep)", "vtk-deepcore-mining-angels-ore4-chunk")
+addItem ("angels-ore5-patch", "Rubyte (Deep)", "vtk-deepcore-mining-angels-ore5-chunk")
+addItem ("angels-ore6-patch", "Bobmonium (Deep)", "vtk-deepcore-mining-angels-ore6-chunk")
 
 -- DrugLab
 addItem ("manganese-ore-dl", "Manganese", "manganese-ore-dl")

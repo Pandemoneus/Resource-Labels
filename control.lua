@@ -187,7 +187,7 @@ function createLabelForResourcePatch(player, surface, patch)
             return force.add_chart_tag(surface, chartTag)
         end)
 
-        if not success then
+        if not success and global.settings["resource-labels-show-unknown-entity-msg"] then
             player.print{"resource-labels-unknown-resource-entity-msg", entity.name, MOD.title}
         end
 
@@ -338,6 +338,7 @@ function cacheSettings()
     cacheSetting(settings, "resource-labels-show-infinite-ores")
     cacheSetting(settings, "resource-labels-minimum-resource-count")
     cacheSetting(settings, "resource-labels-minimum-resource-entity-count")
+    cacheSetting(settings, "resource-labels-show-unknown-entity-msg")
     global.settings = settings
 end
 

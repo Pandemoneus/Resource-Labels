@@ -1,3 +1,9 @@
+Version: 0.16.7
+Date: 25.02.2018
+  Features:
+    - The "unknown resource entity" message can now be disabled
+    - Updated support Deep Core Mining mod (1.11.1)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.6
 Date: 19.01.2018
   Features:
