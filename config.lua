@@ -46,6 +46,21 @@ addItem ("stone", "Stone", "stone")
 addItem ("uranium-ore", "Uranium", "uranium-ore")
 addFluid("crude-oil", "Oil", "crude-oil")
 
+-- Alien Wall
+addItem ("alien-biomass", "Alien Biomass", "alien-biomass")
+
+-- Angel's Ores
+addFluid("angels-fissure", "Fissure", "thermal-water")
+addItem ("angels-ore1", "Saphirite", "angels-ore1")
+addItem ("angels-ore2", "Jivolite", "angels-ore2")
+addItem ("angels-ore3", "Stiratite", "angels-ore3")
+addItem ("angels-ore4", "Crotinnium", "angels-ore4")
+addItem ("angels-ore5", "Rubyte", "angels-ore5")
+addItem ("angels-ore6", "Bobmonium", "angels-ore6")
+
+-- Angel's Petrochem
+addFluid("angels-natural-gas", "Natural Gas", "gas-natural-1")
+
 --Bob's Ores
 addItem ("gold-ore", "Gold", "gold-ore")
 addItem ("lead-ore", "Lead", "lead-ore")
@@ -63,18 +78,6 @@ addItem ("gem-ore", "Gemstones", "gem-ore")
 addItem ("thorium-ore", "Thorium", "thorium-ore")
 addFluid("ground-water", "Water", "water")
 addFluid("lithia-water", "Lithia Water", "lithia-water")
-
--- Angel's Ores
-addFluid("angels-fissure", "Fissure", "thermal-water")
-addItem ("angels-ore1", "Saphirite", "angels-ore1")
-addItem ("angels-ore2", "Jivolite", "angels-ore2")
-addItem ("angels-ore3", "Stiratite", "angels-ore3")
-addItem ("angels-ore4", "Crotinnium", "angels-ore4")
-addItem ("angels-ore5", "Rubyte", "angels-ore5")
-addItem ("angels-ore6", "Bobmonium", "angels-ore6")
-
--- Angel's Petrochem
-addFluid("angels-natural-gas", "Natural Gas", "gas-natural-1")
 
 -- Dark Matter Replicators
 addItem ("tenemut", "Tenemut", "tenemut")
@@ -104,6 +107,32 @@ addFluid("geothermal", "Geothermal Water", "geothermal-water")
 -- Ice Ore
 addItem ("ice-ore", "Ice", "ice-ore")
 
+-- MadClown01's Extended AngelBob Minerals
+addItem ("clowns-ore1", "Adamantite", "clowns-ore1")
+addItem ("clowns-ore2", "Antitate", "clowns-ore2")
+addItem ("clowns-ore3", "Pro-Galena", "clowns-ore3")
+addItem ("clowns-ore4", "Orichalcite", "clowns-ore4")
+addItem ("clowns-ore5", "Phosphorite", "clowns-ore5")
+addItem ("clowns-ore6", "Sanguinate", "clowns-ore6")
+addItem ("clowns-ore7", "Elionagate", "clowns-ore7")
+addItem ("clowns-resource1", "Alluvial", "clowns-resource1")
+addItem ("clowns-resource2", "Oil Sand", "clowns-resource2")
+addItem ("clowns-resource3", "Crystal", "gem-ore")
+
+addInfiniteItem("clowns-ore1")
+addInfiniteItem("clowns-ore2")
+addInfiniteItem("clowns-ore3")
+addInfiniteItem("clowns-ore4")
+addInfiniteItem("clowns-ore5")
+addInfiniteItem("clowns-ore6")
+addInfiniteItem("clowns-ore7")
+addInfiniteItem("clowns-resource1")
+addInfiniteItem("clowns-resource2")
+
+-- Omnimatter
+addItem ("omnite", "Omnite", "omnite")
+addItem ("infinite-omnite", "Infinite Omnite", "omnite")
+
 -- Portal Research
 addItem ("factorium-ore", "Factorium", "factorium-ore")
 
@@ -111,10 +140,6 @@ addItem ("factorium-ore", "Factorium", "factorium-ore")
 addItem ("molybdenum-ore", "Molybdenum", "molybdenum-ore")
 addItem ("volcanic-pipe", "Kimberlite", "kimberlite-rock")
 addItem ("regolites", "Regolite", "regolite-rock")
-
--- Omnimatter
-addItem ("omnite", "Omnite", "omnite")
-addItem ("infinite-omnite", "Infinite Omnite", "omnite")
 
 -- Xander
 addItem ("apatite", "Apatite", "apatite")
@@ -134,9 +159,6 @@ addItem ("sulfidic-ore", "Sulfidic", "sulfidic-ore")
 -- Yuoki Industries
 addItem ("y-res1", "N4-Material", "y-res1")
 addItem ("y-res2", "F7-Material", "y-res2")
-
--- Alien Wall
-addItem ("alien-biomass", "Alien Biomass", "alien-biomass")
 
 -- Angel's Infinite Ores
 addInfiniteItem("coal")

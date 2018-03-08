@@ -1,3 +1,10 @@
+Version: 0.16.8
+Date: 08.03.2018
+  Features:
+    - Added support for MadClown01's Extended AngelBob Minerals (1.0.3)
+  Changes:
+    - Showing resource names now defaults to true (was false before)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.7
 Date: 25.02.2018
   Features:

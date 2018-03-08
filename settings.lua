@@ -11,7 +11,7 @@ data:extend({
 		type = "bool-setting",
 		name = "resource-labels-show-labels",
 		setting_type = "runtime-global",
-		default_value = false,
+		default_value = true,
 		order = "aa"
 	},
 	{
