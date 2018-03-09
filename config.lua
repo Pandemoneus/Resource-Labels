@@ -96,6 +96,17 @@ addItem ("angels-ore4-patch", "Crotinnium (Deep)", "vtk-deepcore-mining-angels-o
 addItem ("angels-ore5-patch", "Rubyte (Deep)", "vtk-deepcore-mining-angels-ore5-chunk")
 addItem ("angels-ore6-patch", "Bobmonium (Deep)", "vtk-deepcore-mining-angels-ore6-chunk")
 
+-- DyWorld
+-- addItem ("gold-ore", "Gold", "gold-ore") <- covered by Bobs
+-- addItem ("tin-ore", "Tin", "tin-ore") <- covered by Bobs
+-- addItem ("silver-ore", "Silver", "silver-ore") <- covered by Bobs
+addItem ("chromium-ore", "Chromium", "chromium-ore")
+-- addItem ("lead-ore", "Lead", "lead-ore") <- covered by Bobs
+-- addItem ("tungsten-ore", "Tungsten", "tungsten-ore") <- covered by Bobs
+-- addItem ("zinc-ore", "Zinc", "zinc-ore") <- covered by Bobs
+addItem ("aluminium-ore", "Aluminium", "aluminium-ore")
+-- addItem ("nickel-ore", "Nickel", "nickel-ore") <- covered by Bobs
+
 -- DrugLab
 addItem ("manganese-ore-dl", "Manganese", "manganese-ore-dl")
 addItem ("tarsands-dl", "Tar Sand", "tarsands-dl")
@@ -140,6 +151,9 @@ addItem ("factorium-ore", "Factorium", "factorium-ore")
 addItem ("molybdenum-ore", "Molybdenum", "molybdenum-ore")
 addItem ("volcanic-pipe", "Kimberlite", "kimberlite-rock")
 addItem ("regolites", "Regolite", "regolite-rock")
+
+-- PyCoal touched by an Angel
+addInfiniteItem("molybdenum-ore")
 
 -- Xander
 addItem ("apatite", "Apatite", "apatite")

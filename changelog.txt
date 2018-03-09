@@ -1,3 +1,9 @@
+Version: 0.16.9
+Date: 09.03.2018
+  Features:
+    - Added support for DyWorld (0.6.2)
+    - Added support for PyCoal Touched By an Angel (0.0.8)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.8
 Date: 08.03.2018
   Features:
