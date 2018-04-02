@@ -1,3 +1,11 @@
+Version: 0.16.10
+Date: 02.04.2018
+  Features:
+    - Added support for Pyanodons Coal Processing (1.0.5)
+    - Added support for Pyanodons HighTech (1.0.2)
+    - Updated support for Pyanodons Fusion Energy (1.0.2)
+    - Updated support for MadClown01's Extended AngelBob Minerals (1.0.6)
+---------------------------------------------------------------------------------------------------
 Version: 0.16.9
 Date: 09.03.2018
   Features:

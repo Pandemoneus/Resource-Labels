@@ -126,7 +126,10 @@ addItem ("clowns-ore4", "Orichalcite", "clowns-ore4")
 addItem ("clowns-ore5", "Phosphorite", "clowns-ore5")
 addItem ("clowns-ore6", "Sanguinate", "clowns-ore6")
 addItem ("clowns-ore7", "Elionagate", "clowns-ore7")
-addItem ("clowns-resource1", "Alluvial", "clowns-resource1")
+addItem ("clowns-ore8", "Meta-Garnierite", "clowns-ore8")
+addItem ("clowns-ore9", "Meta-Garnierite", "clowns-ore9")
+addItem ("clowns-ore10", "Meta-Garnierite", "clowns-ore10")
+addItem ("clowns-resource1", "Alluvium", "clowns-resource1")
 addItem ("clowns-resource2", "Oil Sand", "clowns-resource2")
 addItem ("clowns-resource3", "Crystal", "gem-ore")
 
@@ -137,6 +140,9 @@ addInfiniteItem("clowns-ore4")
 addInfiniteItem("clowns-ore5")
 addInfiniteItem("clowns-ore6")
 addInfiniteItem("clowns-ore7")
+addInfiniteItem("clowns-ore8")
+addInfiniteItem("clowns-ore9")
+addInfiniteItem("clowns-ore10")
 addInfiniteItem("clowns-resource1")
 addInfiniteItem("clowns-resource2")
 
@@ -147,10 +153,19 @@ addItem ("infinite-omnite", "Infinite Omnite", "omnite")
 -- Portal Research
 addItem ("factorium-ore", "Factorium", "factorium-ore")
 
--- Pyanodon's Fusion
+-- Pyanodon's Coal Processing
+addItem ("borax", "Borax", "raw-borax")
+addItem ("niobium", "Niobium", "niobium-ore")
+
+-- Pyanodon's Fusion Energy
 addItem ("molybdenum-ore", "Molybdenum", "molybdenum-ore")
 addItem ("volcanic-pipe", "Kimberlite", "kimberlite-rock")
+addItem ("kimberlite-rock", "Kimberlite", "kimberlite-rock")
 addItem ("regolites", "Regolite", "regolite-rock")
+
+-- Pyanodon's High Tech
+addItem ("phosphate-rock", "Phosphate", "phosphate-rock")
+addItem ("rare-earth-ore", "Rare Earth", "rare-earth-ore")
 
 -- PyCoal touched by an Angel
 addInfiniteItem("molybdenum-ore")
